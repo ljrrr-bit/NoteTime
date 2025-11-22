@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冰块火鸡面的日记</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar: Calendar/Navigation -->
+        <aside class="sidebar">
+            <div class="profile">
+                <h1>冰块火鸡面</h1>
+                <p>窜窜窜！！</p>
+            </div>
+            
+            <div class="calendar-nav">
+                <h3><i class="far fa-calendar-alt"></i> 日历归档</h3>
+                <div id="calendar-tree">
+                    <!-- Calendar structure will be injected here by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content: Timeline -->
+        <main class="main-content">
+            <div class="timeline-header">
+                <h2 id="current-view-title">最新动态</h2>
+            </div>
+
+            <div id="timeline-feed">
+                <!-- Posts will be injected here -->
+            </div>
+
+            <div id="pagination" class="pagination">
+                <button id="load-more-btn" onclick="loadMorePosts()">加载更多</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Post Modal (Overlay for reading full content) -->
+    <div id="post-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body" class="markdown-body">
+                <!-- Markdown content renders here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
+
