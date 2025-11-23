@@ -194,14 +194,57 @@ body {
     box-shadow: 0 5px 30px rgba(0,0,0,0.2);
 }
 
-.close-modal {
+/* Modal Controls Container */
+.modal-controls {
     position: absolute;
     top: 15px;
-    right: 25px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Font Size Controls */
+.font-size-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.font-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.font-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.font-btn:active {
+    transform: scale(0.95);
+}
+
+.close-modal {
     color: #aaa;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    background: none;
+    border: none;
 }
 
 .close-modal:hover {
@@ -210,9 +253,10 @@ body {
 
 /* Markdown Content Styles */
 .markdown-body {
-    font-size: 1.1rem;
+    font-size: 0.66rem;  /* 默认值为原来1.1rem的60% */
     line-height: 1.8;
     color: var(--text-main);
+    transition: font-size 0.2s ease;  /* 添加平滑过渡效果 */
 }
 
 .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
@@ -322,16 +366,17 @@ body {
 
 /* TXT Content Styles */
 .text-content {
-    font-size: 1.1rem;
+    font-size: 0.66rem;  /* 默认值为原来1.1rem的60% */
     line-height: 1.8;
     color: var(--text-main);
+    transition: font-size 0.2s ease;  /* 添加平滑过渡效果 */
 }
 
 .text-content pre {
     white-space: pre-wrap;       /* 保留空格和换行，自动换行 */
     word-wrap: break-word;       /* 长单词自动换行 */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.1rem;
+    font-size: inherit;          /* 继承父元素的字体大小 */
     line-height: 1.8;
     margin: 0;
     padding: 0;

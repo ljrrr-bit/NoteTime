@@ -22,6 +22,12 @@ let currentPosts = [];
 let currentPage = 1;
 const postsPerPage = 10;
 
+// 字体大小控制
+let currentFontSize = 0.66; // 默认字体大小（rem），为原来1.1rem的60%
+const fontSizeStep = 0.1;    // 每次调整的步长
+const minFontSize = 0.4;     // 最小字体大小
+const maxFontSize = 2.0;     // 最大字体大小
+
 document.addEventListener('DOMContentLoaded', init);
 
 async function init() {
@@ -54,6 +60,10 @@ async function init() {
                 closeModal();
             }
         });
+
+        // 绑定字体大小控制按钮
+        document.getElementById('increase-font').addEventListener('click', increaseFontSize);
+        document.getElementById('decrease-font').addEventListener('click', decreaseFontSize);
 
     } catch (error) {
         console.error('Init Error:', error);
@@ -307,6 +317,9 @@ async function openPost(post) {
     body.innerHTML = '<p>加载中...</p>';
     modal.style.display = 'block';
     
+    // 重置字体大小为默认值
+    currentFontSize = 0.66;
+    
     try {
         // 使用 Raw 内容 URL 获取内容
         const response = await fetch(post.url);
@@ -321,6 +334,9 @@ async function openPost(post) {
             // TXT 文件：保留纯文本格式（保留换行、空格和缩进）
             body.innerHTML = `<div class="text-content"><pre>${escapeHtml(content)}</pre></div>`;
         }
+        
+        // 应用默认字体大小
+        updateFontSize();
     } catch (error) {
         console.error(error);
         body.innerHTML = '<p>加载内容失败。请检查文件路径或网络。</p>';
@@ -341,4 +357,29 @@ function closeModal() {
 function showError(msg) {
     document.getElementById('timeline-feed').innerHTML = `<div style="color:red; text-align:center; padding:20px; border:1px solid red;">${msg}</div>`;
     document.getElementById('load-more-btn').style.display = 'none';
+}
+
+// 增大字体
+function increaseFontSize() {
+    if (currentFontSize < maxFontSize) {
+        currentFontSize += fontSizeStep;
+        updateFontSize();
+    }
+}
+
+// 缩小字体
+function decreaseFontSize() {
+    if (currentFontSize > minFontSize) {
+        currentFontSize -= fontSizeStep;
+        updateFontSize();
+    }
+}
+
+// 更新字体大小
+function updateFontSize() {
+    const modalBody = document.getElementById('modal-body');
+    const contentDiv = modalBody.querySelector('.markdown-body, .text-content');
+    if (contentDiv) {
+        contentDiv.style.fontSize = currentFontSize + 'rem';
+    }
 }
