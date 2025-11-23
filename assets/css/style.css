@@ -288,11 +288,48 @@ body {
 }
 
 .markdown-body ul, .markdown-body ol {
-    margin-left: 2rem;
+    margin-left: 1.5em;
     margin-bottom: 1rem;
+    padding-left: 0.5em;
+}
+
+.markdown-body ul {
+    list-style-type: disc;
+}
+
+.markdown-body ol {
+    list-style-type: decimal;
 }
 
 .markdown-body li {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    position: relative;
+}
+
+/* 控制 bullet point 的大小和样式 */
+.markdown-body ul li::marker {
+    font-size: 0.7em;
+    color: var(--text-muted);
+}
+
+.markdown-body ol li::marker {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+/* 嵌套列表样式 */
+.markdown-body ul ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown-body ul ul li::marker {
+    font-size: 0.6em;
+}
+
+.markdown-body ol ol {
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
@@ -370,6 +407,19 @@ body {
     line-height: 1.8;
     color: var(--text-main);
     transition: font-size 0.2s ease;  /* 添加平滑过渡效果 */
+}
+
+.text-content ul, .text-content ol {
+    margin-left: 1.5em;
+    padding-left: 0.5em;
+}
+
+.text-content ul li::marker {
+    font-size: 0.7em;
+}
+
+.text-content ol li::marker {
+    font-size: 1em;
 }
 
 .text-content pre {
