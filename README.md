@@ -1,4 +1,4 @@
-# (Diary)
+# (Diary) 网站部署链接 ：https://ljrrr-bit.github.io/NoteTime/
 
 这是一个“零维护”的静态日记网站。
 **只需往 GitHub 文件夹里丢 `.md` 文件，网页就会自动显示，不需要运行任何脚本。**
