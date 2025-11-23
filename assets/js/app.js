@@ -315,11 +315,11 @@ async function openPost(post) {
         
         // 根据文件类型渲染内容
         if (post.fileType === 'markdown') {
-            // Markdown 文件：使用 marked 解析
-            body.innerHTML = marked.parse(content);
+            // Markdown 文件：使用 marked 解析，并添加样式类
+            body.innerHTML = `<div class="markdown-body">${marked.parse(content)}</div>`;
         } else {
-            // TXT 文件：保留纯文本格式（保留换行和空格）
-            body.innerHTML = `<pre style="white-space: pre-wrap; word-wrap: break-word; font-family: inherit; line-height: 1.8;">${escapeHtml(content)}</pre>`;
+            // TXT 文件：保留纯文本格式（保留换行、空格和缩进）
+            body.innerHTML = `<div class="text-content"><pre>${escapeHtml(content)}</pre></div>`;
         }
     } catch (error) {
         console.error(error);
